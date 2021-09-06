@@ -6,6 +6,8 @@
 ![HDL Design](https://img.shields.io/badge/Quartus%20Pro%2021.2%20-Cyclone%2010-green) 
 ![Simulation](https://img.shields.io/badge/Model%20Sim-Intel%20FPGA%20Edition-lightgrey) 
 
+
+```graphql
 ## Directory
 ./src/* 
   ├─ src/images - # Processor modules and driver simulation results
@@ -18,3 +20,4 @@
   └─ src/PROCESSOR-STIMULUS.txt - # Processor Driver Code example
 ./Instruction-Set.pdf - # Driver instructions for the processor
 ./Doc.pdf - # Architecture and instruction formats
+```
