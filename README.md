@@ -7,7 +7,7 @@
 ![Simulation](https://img.shields.io/badge/Model%20Sim-Intel%20FPGA%20Edition-lightgrey) 
 
 ## Features
-![image](https://user-images.githubusercontent.com/57676220/132168301-f67a5b83-57a4-497b-b523-0a09e9258919.png)
+<img src="https://user-images.githubusercontent.com/57676220/132168301-f67a5b83-57a4-497b-b523-0a09e9258919.png" width = 100>
 
 ## Architecture
 
