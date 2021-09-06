@@ -12,7 +12,7 @@
 ## Architecture
 
 ### Processor
-<img src="https://user-images.githubusercontent.com/57676220/132168071-533ecd34-3ef8-4dab-8fa4-406dfe81cd74.PNG" width = 400>
+<img src="https://user-images.githubusercontent.com/57676220/132168071-533ecd34-3ef8-4dab-8fa4-406dfe81cd74.PNG" width = 600>
 
 ### ALU Block
 <img src="https://user-images.githubusercontent.com/57676220/132168228-2d6a9789-ab0c-4465-b704-36c701c93c10.PNG" width = 400>
@@ -47,7 +47,7 @@
 </details>
 
 ### Instruction Pipeline
-<img src="https://user-images.githubusercontent.com/57676220/132168159-072b56d6-7e95-436e-a00c-9369ccff26ff.PNG" width = 400>
+<img src="https://user-images.githubusercontent.com/57676220/132168159-072b56d6-7e95-436e-a00c-9369ccff26ff.PNG" width = 600>
 
 ## Directory
 ```graphql
