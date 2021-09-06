@@ -6,6 +6,48 @@
 ![HDL Design](https://img.shields.io/badge/Quartus%20Pro%2021.2%20-Cyclone%2010-green) 
 ![Simulation](https://img.shields.io/badge/Model%20Sim-Intel%20FPGA%20Edition-lightgrey) 
 
+## Features
+![image](https://user-images.githubusercontent.com/57676220/132168301-f67a5b83-57a4-497b-b523-0a09e9258919.png)
+
+## Architecture
+
+### Processor
+![Architecture](https://user-images.githubusercontent.com/57676220/132168071-533ecd34-3ef8-4dab-8fa4-406dfe81cd74.PNG)
+
+### ALU Block
+![ALUBLOCK](https://user-images.githubusercontent.com/57676220/132168228-2d6a9789-ab0c-4465-b704-36c701c93c10.PNG)
+
+### Internal Buses
+![image](https://user-images.githubusercontent.com/57676220/132168389-b2416d2e-0460-4ed7-a03f-d18f0099b750.png)
+
+### Control Signals
+
+<details>
+<summary>List of internal control signals</summary>
+
+ i. INSGRP
+ii. INSOPC
+iii. RDIM
+iv. RDDM
+v. WRDM
+vi. OPERANDS1
+vii. OPERANDS2
+viii. OPERANDS3
+ix. ALU
+x. RDLOAD
+xi. RDSTORE
+xii. ASSIGN
+xiii. MOV
+xiv. BRANCH
+xv. SPC
+xvi. RSPC
+xvii. SWRESET
+xviii. STOP
+ 
+</details>
+
+### Instruction Pipeline
+![Pipeline](https://user-images.githubusercontent.com/57676220/132168159-072b56d6-7e95-436e-a00c-9369ccff26ff.PNG)
 
 ## Directory
 ```graphql
