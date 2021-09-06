@@ -1,0 +1,16 @@
+//16k x 8 bit data mem
+module datamemory(
+input clk,
+input RDDM,
+input [13:0]DM_addbus,
+input WRDM,
+inout [7:0] DM_databus);
+reg [7:0] dmemory [0:16];
+initial begin
+ $readmemb("C:\\intelFPGA_lite\\19.1\\quartus\\RISC TESTING\\model.dat",  dmemory);
+ end
+assign DM_databus=(RDDM)?dmemory[DM_addbus]: 8'bz;
+always@(posedge clk)
+	if(WRDM)
+	dmemory[DM_addbus]=DM_databus;
+endmodule

@@ -1,0 +1,88 @@
+
+module ptest;
+reg ENABLE;
+reg IMclk;
+reg ALUDMclk;
+reg reset;
+wire [1:0]insgrp;
+wire [2:0]insopc;
+wire RDIM;
+wire RDDM;
+wire WRDM;
+wire [23:0]IRX;
+wire [7:0]result1;
+wire [3:0]flagreg;
+wire [7:0]operands1;
+wire [7:0]operands2;
+wire [7:0]operands3;
+wire [7:0]DM_databus;
+wire [23:0]IM_insbus;
+wire [13:0]DM_addbus;
+wire [7:0]PC;
+wire aluclk;
+wire dmclk;
+wire [3:0]flag;
+wire RDLOAD;
+wire RDSTORE;
+wire ALU;
+wire ASSIGN;
+wire MOV;
+wire BRANCH;
+wire SPC;
+wire RSPC;
+wire SWRESET;
+wire [7:0] result;
+wire [7:0]operandstemp;
+processor1 check(
+.ENABLE(ENABLE),
+.IMclk(IMclk),
+.ALUDMclk(ALUDMclk),
+.reset(reset),
+.insgrp(insgrp),
+.insopc(insopc),
+.RDIM(RDIM),
+.RDDM(RDDM),
+.WRDM(WRDM),
+.IRX(IRX),
+.result1(result1),
+.flagreg(flagreg),
+.operands1(operands1),
+.operands2(operands2),
+.operands3(operands3),
+.DM_databus(DM_databus),
+.IM_insbus(IM_insbus),
+.DM_addbus(DM_addbus),
+.PC(PC),
+.aluclk(aluclk),
+.dmclk(dmclk),
+.flag(flag),
+.result(result),
+.RDLOAD(RDLOAD),
+.RDSTORE(RDSTORE),
+.ALU(ALU),
+.ASSIGN(ASSIGN),
+.MOV(MOV),
+.BRANCH(BRANCH),
+.SPC(SPC),
+.RSPC(RSPC),
+.SWRESET(SWRESET),
+.operandstemp(operandstemp)
+);
+initial
+begin
+reset=1'b0;
+ENABLE=1'b1;
+end
+
+always
+begin
+#10 IMclk=1'b1;
+#10 IMclk=1'b0;
+#10 ALUDMclk=1'b1;
+#10 ALUDMclk=1'b0;
+end
+
+initial begin
+#2000 $stop;
+end
+endmodule

@@ -1,0 +1,11 @@
+//256 x 24 bit ins mem
+module insmemory(
+input RDIM,
+input [7:0]IM_addbus,
+output [23:0] IM_insbus);
+reg [23:0]imemory[0:255];
+initial begin
+ $readmemb("C:\\intelFPGA_lite\\19.1\\quartus\\PROCESS\\instructioncode.dat",  imemory);
+ end
+assign IM_insbus=(RDIM)?imemory[IM_addbus]: 8'bz;
+endmodule

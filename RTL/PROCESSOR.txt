@@ -1,0 +1,437 @@
+
+/* 
+RegA=5'b00000,
+RegB=5'b00001,
+RegC=5'b00010,
+RegD=5'b00011,
+RegE=5'b00100,
+RegF=5'b00101,
+RegG=5'b00110,
+RegH=5'b00111,
+RegI=5'b01000,
+RegJ=5'b01001,
+RegK=5'b01010,
+RegL=5'b01011,
+RegM=5'b01100,
+RegN=5'b01101,
+RegO=5'b01110,
+
+RegZero=5'b01111,
+RegPCS1=5'b10000,
+RegPCS2=5'b10001,
+RegPCS3=5'b10010,
+
+Regsad1=5'b10011,
+Regsad2=5'b10100;
+*/
+//21 registers for GPR's
+//11 saved for assembler
+module processor(
+input clk,
+input reset,
+output reg[7:0]IM_addbus,
+output reg [13:0]DM_addbus,
+output  [7:0]DM_databus,
+output [23:0]IM_insbus,
+output reg [7:0]result,
+output reg [3:0]flag
+);
+
+reg [7:0]PC;
+reg [7:0]PCR;
+reg [7:0]PCS;
+reg RDIM;
+reg RDDM;
+reg WRDM;
+reg aluclk;
+reg dataclk;
+reg [23:0]IRX;
+reg B;
+reg [1:0]insgrp;
+reg [2:0]insop;
+reg [7:0]operands1;
+reg [7:0]operandchange;
+wire [3:0]tempflag;
+reg [7:0]negate;//temp reg
+reg softwarereset;
+reg run;
+reg [7:0]storereg;
+wire [7:0]result1;
+reg [7:0]operands[0:31];
+
+initial 
+begin
+RDIM=1'b0;
+RDDM=1'b0;
+WRDM=1'b0;
+PCR=8'b0;
+PCS=8'b0;
+flag=4'b0000;
+run=1'b1;
+IM_addbus=8'bz;
+end
+
+
+//INS MEM INSTANTIATION
+insmemory in(
+.RDIM(RDIM),
+.IM_addbus(PC),
+.IM_insbus(IM_insbus));
+
+//DATA MEM INSTANTIATION
+datamemory da(
+.clk(dataclk),
+.RDDM(RDDM),
+.DM_addbus(DM_addbus),
+.WRDM(WRDM),
+.DM_databus(DM_databus));
+
+//ALU INSTANTIATION
+alu bit8(
+.clk(aluclk),
+.grp(insgrp),
+.opcode(insop),
+.operand1(operands1),
+.operand2(operands[IRX[13:9]]),
+.operand3(operandchange[7:0]),
+.flags(flag),
+.finaloperand(result1),
+.outflags1(tempflag));
+
+assign DM_databus=(WRDM==1'b1)?storereg:8'bz;
+
+always@(reset==1'b1 || softwarereset==1'b1)
+begin
+run=1'b0;
+PC=8'bz;
+PCR=8'bz;
+PCS=8'bz;
+RDIM=1'bz;
+RDDM=1'bz;
+WRDM=1'bz;
+end
+
+
+always@(posedge clk && (run==1'b1) && (reset==1'b0)&& (softwarereset==1'b0))
+begin
+PC=PCR;
+RDIM=(reset==1'b0)?1'b1:1'b0;
+IM_addbus=(reset==1'b0)?PC:8'bz;
+aluclk=1'b0;
+dataclk=1'b0;
+WRDM=1'b0;
+RDDM=1'b0;
+
+IRX=IM_insbus;
+
+
+case(IRX[23:22])
+2'b00:insgrp=2'b00;
+
+
+2'b01:insgrp=2'b01;
+
+
+2'b10:insgrp=2'b10;
+
+
+2'b11:insgrp=2'b11;
+
+default:insgrp=2'bx;
+endcase
+
+case(IRX[21:19])
+
+3'b000:insop=3'b000;
+
+3'b001:insop=3'b001;
+
+3'b010:insop=3'b010;
+
+3'b011:insop=3'b011;
+
+3'b100:insop=3'b100;
+
+3'b101:insop=3'b101;
+
+3'b110:insop=3'b110;
+
+3'b111:insop=3'b111;
+
+default:insop=3'bx;
+endcase
+
+
+////////////////////////////////////////////////////////
+
+
+if(insgrp==2'b00)
+begin
+case(insop)
+3'b000:
+begin
+operands1=operands[IRX[18:14]];
+operandchange=(IRX[8]==1'b0)?operands[IRX[4:0]]:IRX[7:0];
+aluclk=1'b1;
+operands[IRX[18:14]]=result;
+result=result1;
+flag=tempflag;
+aluclk=1'b0;
+end
+
+3'b001:
+begin
+operands1=operands[IRX[18:14]];
+operandchange=(IRX[8]==1'b0)?operands[IRX[4:0]]:IRX[7:0];
+aluclk=1'b1;
+operands[IRX[18:14]]=result;
+result=result1;
+flag=tempflag;
+aluclk=1'b0;
+end
+
+3'b010:
+begin
+operands1=operands[IRX[18:14]];
+operandchange=(IRX[8]==1'b0)?operands[IRX[4:0]]:IRX[7:0];
+aluclk=1'b1;
+operands[IRX[18:14]]=result;
+result=result1;
+flag=tempflag;
+aluclk=1'b0;
+end
+
+3'b011:
+begin
+operands1=operands[IRX[18:14]];
+operandchange=(IRX[8]==1'b0)?operands[IRX[4:0]]:IRX[7:0];
+aluclk=1'b1;
+operands[IRX[18:14]]=result;
+result=result1;
+flag=tempflag;
+aluclk=1'b0;
+end
+
+3'b100:
+begin
+negate=operands[IRX[18:14]]+1'b1;
+operands[IRX[18:14]]=negate;
+end
+
+3'b101:
+begin
+negate=operands[IRX[18:14]]-1'b1;
+operands[IRX[18:14]]=negate;
+end
+
+3'b110:
+begin
+negate=~operands[IRX[18:14]];
+operands[IRX[18:14]]=negate;
+end
+default:operands[IRX[18:14]]=8'bx;
+endcase
+
+end
+
+////////////////////////////////////////////////////////
+
+
+if(insgrp==2'b01)
+begin
+
+case(insop)
+3'b000:
+begin
+operands1=operands[IRX[18:14]];
+operandchange=(IRX[8]==1'b0)?operands[IRX[4:0]]:IRX[7:0];
+aluclk=1'b1;
+operands[IRX[18:14]]=result1;
+result=result1;
+flag=tempflag;
+aluclk=1'b0;
+end
+
+3'b001:
+begin
+operands1=operands[IRX[18:14]];
+operandchange=(IRX[8]==1'b0)?operands[IRX[4:0]]:IRX[7:0];
+aluclk=1'b1;
+operands[IRX[18:14]]=result;
+result=result1;
+flag=tempflag;
+aluclk=1'b0;
+end
+
+3'b010:
+begin
+operands1=operands[IRX[18:14]];
+operandchange=IRX[7:0];
+aluclk=1'b1;
+operands[IRX[18:14]]=result;
+result=result1;
+flag=tempflag;
+aluclk=1'b0;
+end
+
+3'b011:
+begin
+operands1=operands[IRX[18:14]];
+operandchange=IRX[7:0];
+aluclk=1'b1;
+operands[IRX[18:14]]=result;
+result=result1;
+flag=tempflag;
+aluclk=1'b0;
+end
+
+3'b100:
+begin
+operands1=operands[IRX[18:14]];
+operandchange=IRX[7:0];
+aluclk=1'b1;
+operands[IRX[18:14]]=result;
+result=result1;
+flag=tempflag;
+aluclk=1'b0;
+end
+
+3'b101:
+begin
+operands1=operands[IRX[18:14]];
+operandchange=IRX[7:0];
+aluclk=1'b1;
+operands[IRX[18:14]]=result;
+result=result1;
+flag=tempflag;
+aluclk=1'b0;
+end
+
+3'b110:
+begin
+flag=IRX[3:0];
+end
+
+3'b111:
+begin
+operands[IRX[18:14]]=flag;
+end
+
+default:operands[IRX[18:14]]=8'bx;
+endcase
+end
+
+//////////////////////////////////////////////////////////////
+
+
+if(insgrp==2'b10)
+begin
+case(insop)
+3'b000:
+begin
+B=1'b1;
+end
+
+3'b001:
+begin
+B=(flag[0]==1'b1)?1'b1:1'b0;
+end
+
+3'b010:
+begin
+B=(flag[0]==1'b0)?1'b1:1'b0;
+end
+
+
+3'b011:
+begin
+B=(flag[2]==1'b1)?1'b1:1'b0;
+end
+
+
+3'b100:
+begin
+B=(flag[2]==1'b0)?1'b1:1'b0;
+end
+
+
+3'b101:
+begin
+B=(flag[3]==1'b0)?1'b1:1'b0;
+end
+
+
+3'b110:
+begin
+B=(flag[3]==1'b1)?1'b1:1'b0;
+end
+default:B=1'b0;
+endcase
+end
+
+//////////////////////////////////////////////////////////
+
+
+if(insgrp==2'b11)
+begin
+case(insop)
+3'b000:
+begin
+softwarereset=1'b1;
+end
+
+3'b001:
+begin
+//NO OP
+end
+
+3'b010:
+begin
+PCS=PC;
+end
+
+3'b011:
+begin
+PC=PCS;
+end
+
+3'b100:
+begin
+RDDM=1'b1;
+DM_addbus=IRX[13:0];
+WRDM=1'b0;
+operands[IRX[18:14]]=DM_databus;
+RDDM=1'b0;
+end
+
+3'b101:
+begin
+RDDM=1'b0;
+WRDM=1'b1;
+dataclk=1'b1;
+storereg=operands[IRX[18:14]];
+WRDM=1'b0;
+dataclk=1'b0;
+end
+
+//MOV
+3'b110:
+begin
+operands[IRX[18:14]]=operands[IRX[13:9]];
+end
+
+default:dataclk=1'b0;
+endcase
+end
+
+
+////////////////////////////////////////////////////////
+
+
+PCR=((IRX[23:22]==2'b10)&&(B==1'b1))? IRX[7:0] :(PC+1'b1);
+
+
+end
+
+endmodule
+
