@@ -25,24 +25,24 @@
 <details>
 <summary>List of internal control signals</summary>
 
- i. INSGRP
-ii. INSOPC
-iii. RDIM
-iv. RDDM
-v. WRDM
-vi. OPERANDS1
-vii. OPERANDS2
-viii. OPERANDS3
-ix. ALU
-x. RDLOAD
-xi. RDSTORE
-xii. ASSIGN
-xiii. MOV
-xiv. BRANCH
-xv. SPC
-xvi. RSPC
-xvii. SWRESET
-xviii. STOP
+1. `INSGRP`
+2. `INSOPC`
+3. `RDIM`
+4. `RDDM`
+5. `WRDM`
+6. `OPERANDS1`
+7. `OPERANDS2`
+8. `OPERANDS3`
+9. `ALU`
+10. `RDLOAD`
+11. `RDSTORE`
+12. `ASSIGN`
+13. `MOV`
+14. `BRANCH`
+15. `SPC`
+16. `RSPC`
+17. `SWRESET`
+18. `STOP`
  
 </details>
 
