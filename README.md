@@ -7,18 +7,18 @@
 ![Simulation](https://img.shields.io/badge/Model%20Sim-Intel%20FPGA%20Edition-lightgrey) 
 
 ## Features
-<img src="https://user-images.githubusercontent.com/57676220/132168301-f67a5b83-57a4-497b-b523-0a09e9258919.png" width = 100>
+<img src="https://user-images.githubusercontent.com/57676220/132168301-f67a5b83-57a4-497b-b523-0a09e9258919.png" width = 400>
 
 ## Architecture
 
 ### Processor
-![Architecture](https://user-images.githubusercontent.com/57676220/132168071-533ecd34-3ef8-4dab-8fa4-406dfe81cd74.PNG)
+<img src="https://user-images.githubusercontent.com/57676220/132168071-533ecd34-3ef8-4dab-8fa4-406dfe81cd74.PNG" width = 400>
 
 ### ALU Block
-![ALUBLOCK](https://user-images.githubusercontent.com/57676220/132168228-2d6a9789-ab0c-4465-b704-36c701c93c10.PNG)
+<img src="https://user-images.githubusercontent.com/57676220/132168228-2d6a9789-ab0c-4465-b704-36c701c93c10.PNG" width = 400>
 
 ### Internal Buses
-![image](https://user-images.githubusercontent.com/57676220/132168389-b2416d2e-0460-4ed7-a03f-d18f0099b750.png)
+<img src="https://user-images.githubusercontent.com/57676220/132168389-b2416d2e-0460-4ed7-a03f-d18f0099b750.png" width = 400>
 
 ### Control Signals
 
@@ -47,7 +47,7 @@
 </details>
 
 ### Instruction Pipeline
-![Pipeline](https://user-images.githubusercontent.com/57676220/132168159-072b56d6-7e95-436e-a00c-9369ccff26ff.PNG)
+<img src="https://user-images.githubusercontent.com/57676220/132168159-072b56d6-7e95-436e-a00c-9369ccff26ff.PNG" width = 400>
 
 ## Directory
 ```graphql
