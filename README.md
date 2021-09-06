@@ -7,8 +7,8 @@
 ![Simulation](https://img.shields.io/badge/Model%20Sim-Intel%20FPGA%20Edition-lightgrey) 
 
 
-```graphql
 ## Directory
+```graphql
 ./src/* 
   ├─ src/images - # Processor modules and driver simulation results
   ├─ src/ALU.txt - # ALU Module of the processor
