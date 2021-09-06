@@ -6,6 +6,21 @@
 ![HDL Design](https://img.shields.io/badge/Quartus%20Pro%2021.2%20-Cyclone%2010-green) 
 ![Simulation](https://img.shields.io/badge/Model%20Sim-Intel%20FPGA%20Edition-lightgrey) 
 
+## Directory
+```graphql
+./src/* 
+  ├─ src/images - # Processor modules and driver simulation results
+  ├─ src/ALU.txt - # ALU Module of the processor
+  ├─ src/DATAMEM.txt - # 16 Kilo Byte Data Memory
+  ├─ src/GROUP00TEST-Driver.txt - # Testing Driver Code for Group 00 Instruction set
+  ├─ src/GRP01&11TEST-Driver.txt - # Testing Driver Code for Group 01 && 11 Instruction set
+  ├─ src/INSMEM.txt - # Instruction memory with 256 x 24 Bit instruction capability
+  ├─ src/PROCESSOR.txt - # Processor module which assembles all sub-modules of the processor
+  └─ src/PROCESSOR-STIMULUS.txt - # Processor Driver Code example
+./Instruction-Set.pdf - # Driver instructions for the processor
+./Doc.pdf - # Architecture and instruction formats
+```
+
 ## Features
 <img src="https://user-images.githubusercontent.com/57676220/132168301-f67a5b83-57a4-497b-b523-0a09e9258919.png" width = 400>
 
@@ -49,17 +64,21 @@
 ### Instruction Pipeline
 <img src="https://user-images.githubusercontent.com/57676220/132168159-072b56d6-7e95-436e-a00c-9369ccff26ff.PNG" width = 600>
 
-## Directory
-```graphql
-./src/* 
-  ├─ src/images - # Processor modules and driver simulation results
-  ├─ src/ALU.txt - # ALU Module of the processor
-  ├─ src/DATAMEM.txt - # 16 Kilo Byte Data Memory
-  ├─ src/GROUP00TEST-Driver.txt - # Testing Driver Code for Group 00 Instruction set
-  ├─ src/GRP01&11TEST-Driver.txt - # Testing Driver Code for Group 01 && 11 Instruction set
-  ├─ src/INSMEM.txt - # Instruction memory with 256 x 24 Bit instruction capability
-  ├─ src/PROCESSOR.txt - # Processor module which assembles all sub-modules of the processor
-  └─ src/PROCESSOR-STIMULUS.txt - # Processor Driver Code example
-./Instruction-Set.pdf - # Driver instructions for the processor
-./Doc.pdf - # Architecture and instruction formats
-```
+## Stimulus Results
+
+### Arithmetic Instructions
+<img src="https://user-images.githubusercontent.com/57676220/132169344-b533b8a1-74e2-4d65-bc6f-76a0addac0d4.png" width = 600>
+
+### Logical & Misc Instructions
+<img src="https://user-images.githubusercontent.com/57676220/132169398-837baf8f-a585-4bcc-b01d-36550961ad62.png" width = 600>
+
+### Branch Instructions
+<img src="https://user-images.githubusercontent.com/57676220/132169417-950b6159-71a1-4741-95d0-2911499e3ce3.png" width = 600>
+
+### Machine Control
+<img src="https://user-images.githubusercontent.com/57676220/132169435-8031e0af-89c8-4c75-bd67-569640db9f70.png" width = 600>
+
+<h3 align="left">Connect with me:</h3>
+<p align="left">
+<a href="https://linkedin.com/in/meetdoshi90" target="blank"><img align="center" src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" alt="meetdoshi90" height="30" width="40" /></a>
+</p>
